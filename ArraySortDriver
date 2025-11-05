@@ -1,0 +1,81 @@
+import java.util.Scanner;
+
+public class ArraySortDriver {
+
+    public static void main(String[] args){
+        Scanner stdIn = new Scanner(System.in);
+
+        int quit = -5;
+
+        while (quit != 0){
+
+            int choice = 0;
+            int amountOfInputs;
+            int[] intList;
+            String[] stringList;
+
+            System.out.printf("Would you like to enter integers or strings?%nEnter 1 for integers and 2 for strings%n");
+            choice = stdIn.nextInt();
+
+            if(choice == 1){
+                System.out.printf("How many integers would you like to enter?%n");
+                amountOfInputs = stdIn.nextInt();
+
+                intList = new int[amountOfInputs];
+
+                System.out.printf("Please enter your integer values:%n");
+                for (int i = 0; i<amountOfInputs; i++){
+                    intList[i] = stdIn.nextInt();
+                }
+
+                System.out.printf("Here is the unsorted list:%n");
+                for(int i : intList){
+                    System.out.printf("%s%n",i);
+                }
+
+                Utils.SelectionSortInt(intList);
+
+                System.out.printf("Here is the sorted list:%n");
+                for(int i : intList){
+                    System.out.printf("%s%n",i);
+                }
+
+
+            }
+            else if(choice == 2){
+                System.out.printf("How many strings would you like to enter?%n");
+                amountOfInputs = stdIn.nextInt();
+
+                stringList = new String[amountOfInputs];
+
+                stdIn.nextLine();
+
+                System.out.printf("Please enter your strings:%n");
+                for (int i = 0; i<amountOfInputs; i++){
+                    stringList[i] = stdIn.nextLine();
+                }
+
+                System.out.printf("Here is the unsorted list:%n");
+                for(String i : stringList){
+                    System.out.printf("%s%n",i);
+                }
+
+                Utils.SelectionSortString(stringList);
+
+                System.out.printf("Here is the sorted list:%n");
+                for(String i : stringList){
+                    System.out.printf("%s%n",i);
+                }
+
+            }
+            else{
+                System.out.printf("That is not an option, please choose again.%n");
+            }
+
+            System.out.printf("Press 0 to quit or any other number to continue.%n");
+            quit = stdIn.nextInt();
+        }
+        stdIn.close();
+    }
+
+}
