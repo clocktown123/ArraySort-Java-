@@ -1,7 +1,9 @@
 public class Utils {
 
-    //Selection sort for int lists----------------------------------------------------------
-    public static void SelectionSortInt(int[] list){
+    //Selection sort for int lists############################################################
+    
+    //selection sort lowest to highest
+    public static void SelectionSortIntLowestToHighest(int[] list){
         int j;
         for (int i = 0; i < list.length-1; i++){
             j = indexOfNextSmallest(list, i);
@@ -22,16 +24,41 @@ public class Utils {
         return minIndex;
     }
 
+    //selection sort highest to lowest--------------------------------------------------------------------
+     public static void SelectionSortIntHighestToLowest(int[] list){
+        int j;
+        for (int i = 0; i < list.length - 1; i++){
+            j = indexOfNextLargest(list, i);
+            swap(list, i, j);
+        }
+    }
+
+    private static int indexOfNextLargest(int[] list, int startIndex){
+        int max = list[startIndex];
+        int maxIndex = startIndex;
+
+        for (int i = startIndex + 1; i < list.length; i++){
+            if (list[i] > max){
+                max = list[i];
+                maxIndex = i;
+            }
+        }
+        return maxIndex;
+    }
+    
     private static void swap(int[] list, int i, int j){
         int temp;
         temp = list[i];
         list[i] = list[j];
         list[j] = temp;
     }//end swap
+    
     //end selection sort for int lists -----------------------------------------------------
 
-    //Sort for string lists ----------------------------------------------------------------
-    public static void SelectionSortString(String[] list) {
+    //Sort for string lists ############################################################################################
+    
+    //Selection sort A to Z ------------------------------------------------------------
+    public static void SelectionSortStringAZ(String[] list) {
         int j;
         for (int i = 0; i < list.length - 1; i++) {
             j = indexOfNextSmallest(list, i);
@@ -52,6 +79,29 @@ public class Utils {
         return minIndex;
     }// end return
 
+    //SelectionSort Z to A--------------------------------------------
+    
+    public static void SelectionSortStringZA(String[] list) {
+        int j;
+        for (int i = 0; i < list.length - 1; i++) {
+            j = indexOfNextLargest(list, i);
+            swap(list, i, j);
+        }
+    }
+
+    private static int indexOfNextLargest(String[] list, int startIndex) {
+        String max = list[startIndex];
+        int maxIndex = startIndex;
+
+        for (int i = startIndex + 1; i < list.length; i++) {
+            if (list[i].compareTo(max) > 0) {
+                max = list[i];
+                maxIndex = i;
+            }
+        }
+        return maxIndex;
+    }
+    
     private static void swap(String[] list, int i, int j) {
         String temp = list[i];
         list[i] = list[j];
